@@ -1,0 +1,340 @@
+{
+  "meta": {
+    "origin": "https://<tenant>/platform/?realm=alpha#/journeys/HOTPViaEmailServiceNextGen",
+    "exportedBy": "ps@pingidentity.com",
+    "exportDate": "2024-10-14T14:10:51.031Z",
+    "exportTool": "platform-admin ui tree export",
+    "exportToolVersion": "1.0",
+    "treesSelectedForExport": [
+      "HOTPViaEmailServiceNextGen"
+    ],
+    "innerTreesIncluded": []
+  },
+  "trees": {
+    "HOTPViaEmailServiceNextGen": {
+      "tree": {
+        "_id": "HOTPViaEmailServiceNextGen",
+        "_rev": "461026173",
+        "identityResource": "managed/alpha_user",
+        "uiConfig": {
+          "categories": "[\"Authentication\"]"
+        },
+        "entryNodeId": "3bd0eb4a-a86c-4e54-b5f0-975cf55538f6",
+        "innerTreeOnly": false,
+        "nodes": {
+          "06776e78-f0e3-41ca-80d8-20cd112757b1": {
+            "x": 1502,
+            "y": 264.6166687011719,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "nodeType": "PageNode",
+            "displayName": "OTP"
+          },
+          "1edde625-290a-4235-a380-03a4dcc8c430": {
+            "x": 1164,
+            "y": 284.76666259765625,
+            "connections": {
+              "sent": "06776e78-f0e3-41ca-80d8-20cd112757b1",
+              "error": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "noMail": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "ScriptedDecisionNode",
+            "displayName": "Send Templated email NexGen"
+          },
+          "20d86e84-4d49-49ac-8066-cf0bf6b9dce1": {
+            "x": 712,
+            "y": 283.5,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "56911027-b6a2-45f8-92b9-5cd278a457b2"
+            },
+            "nodeType": "IdentifyExistingUserNode",
+            "displayName": "Identify Existing User"
+          },
+          "3bd0eb4a-a86c-4e54-b5f0-975cf55538f6": {
+            "x": 230,
+            "y": 245.50000000000003,
+            "connections": {
+              "outcome": "e29e491e-0852-47d2-9253-025b1dd68bb4"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Page Node"
+          },
+          "56911027-b6a2-45f8-92b9-5cd278a457b2": {
+            "x": 954,
+            "y": 314,
+            "connections": {
+              "outcome": "1edde625-290a-4235-a380-03a4dcc8c430"
+            },
+            "nodeType": "OneTimePasswordGeneratorNode",
+            "displayName": "HOTP Generator"
+          },
+          "e29e491e-0852-47d2-9253-025b1dd68bb4": {
+            "x": 473,
+            "y": 278.5,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "20d86e84-4d49-49ac-8066-cf0bf6b9dce1"
+            },
+            "nodeType": "DataStoreDecisionNode",
+            "displayName": "Data Store Decision"
+          }
+        },
+        "staticNodes": {
+          "startNode": {
+            "x": 70,
+            "y": 291
+          },
+          "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
+            "x": 1774,
+            "y": 181.16666666666663
+          },
+          "e301438c-0bd0-429c-ab0c-66126501069a": {
+            "x": 1787,
+            "y": 601.3333333333334
+          }
+        },
+        "description": "Platform Login Tree",
+        "mustRun": false,
+        "enabled": true
+      },
+      "nodes": {
+        "06776e78-f0e3-41ca-80d8-20cd112757b1": {
+          "_id": "06776e78-f0e3-41ca-80d8-20cd112757b1",
+          "_rev": "-542436976",
+          "nodes": [
+            {
+              "_id": "4801580c-f558-4528-8f85-77d795664d66",
+              "nodeType": "OneTimePasswordCollectorDecisionNode",
+              "displayName": "OTP Collector Decision"
+            }
+          ],
+          "pageDescription": {
+            "en": "Please check your email and enter your One Time Passcode"
+          },
+          "pageHeader": {
+            "en": "One Time Passcode Required"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "1edde625-290a-4235-a380-03a4dcc8c430": {
+          "_id": "1edde625-290a-4235-a380-03a4dcc8c430",
+          "_rev": "2078681680",
+          "script": "324fb2ff-7120-468e-acce-7ba524ee589b",
+          "outcomes": [
+            "sent",
+            "noMail",
+            "error"
+          ],
+          "outputs": [
+            "*"
+          ],
+          "inputs": [
+            "*"
+          ],
+          "_type": {
+            "_id": "ScriptedDecisionNode",
+            "name": "Scripted Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "sent",
+              "displayName": "sent"
+            },
+            {
+              "id": "noMail",
+              "displayName": "noMail"
+            },
+            {
+              "id": "error",
+              "displayName": "error"
+            }
+          ]
+        },
+        "20d86e84-4d49-49ac-8066-cf0bf6b9dce1": {
+          "_id": "20d86e84-4d49-49ac-8066-cf0bf6b9dce1",
+          "_rev": "1264100500",
+          "identityAttribute": "userName",
+          "identifier": "userName",
+          "_type": {
+            "_id": "IdentifyExistingUserNode",
+            "name": "Identify Existing User",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "3bd0eb4a-a86c-4e54-b5f0-975cf55538f6": {
+          "_id": "3bd0eb4a-a86c-4e54-b5f0-975cf55538f6",
+          "_rev": "1783180929",
+          "nodes": [
+            {
+              "_id": "65d4e444-1051-4c19-899c-4f85837bbb3e",
+              "nodeType": "ValidatedUsernameNode",
+              "displayName": "Platform Username"
+            },
+            {
+              "_id": "ba8fba5b-69bc-4fc1-b17b-0832e3825082",
+              "nodeType": "ValidatedPasswordNode",
+              "displayName": "Platform Password"
+            }
+          ],
+          "pageDescription": {
+            "en": "New here? <a href=\"#/service/Registration\">Create an account</a><br><a href=\"#/service/ForgottenUsername\">Forgot username?</a><a href=\"#/service/ResetPassword\"> Forgot password?</a>"
+          },
+          "pageHeader": {
+            "en": "Sign In"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "56911027-b6a2-45f8-92b9-5cd278a457b2": {
+          "_id": "56911027-b6a2-45f8-92b9-5cd278a457b2",
+          "_rev": "1380453048",
+          "length": 8,
+          "_type": {
+            "_id": "OneTimePasswordGeneratorNode",
+            "name": "HOTP Generator",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "e29e491e-0852-47d2-9253-025b1dd68bb4": {
+          "_id": "e29e491e-0852-47d2-9253-025b1dd68bb4",
+          "_rev": "676762146",
+          "_type": {
+            "_id": "DataStoreDecisionNode",
+            "name": "Data Store Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        }
+      },
+      "innerNodes": {
+        "4801580c-f558-4528-8f85-77d795664d66": {
+          "_id": "4801580c-f558-4528-8f85-77d795664d66",
+          "_rev": "1098673063",
+          "passwordExpiryTime": 5,
+          "_type": {
+            "_id": "OneTimePasswordCollectorDecisionNode",
+            "name": "OTP Collector Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "65d4e444-1051-4c19-899c-4f85837bbb3e": {
+          "_id": "65d4e444-1051-4c19-899c-4f85837bbb3e",
+          "_rev": "1463719824",
+          "usernameAttribute": "userName",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedUsernameNode",
+            "name": "Platform Username",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "ba8fba5b-69bc-4fc1-b17b-0832e3825082": {
+          "_id": "ba8fba5b-69bc-4fc1-b17b-0832e3825082",
+          "_rev": "-687606315",
+          "passwordAttribute": "password",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedPasswordNode",
+            "name": "Platform Password",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        }
+      },
+      "scripts": {
+        "324fb2ff-7120-468e-acce-7ba524ee589b": {
+          "_id": "324fb2ff-7120-468e-acce-7ba524ee589b",
+          "name": "ds-send-templated-email-next-gen",
+          "description": null,
+          "script": "\"/**\\n * @file This script sends a templated HOTP to a user via the IDM's configured email service\\n * using the openidm binding in next-gen scripting\\n * NOTE - The use of SendGrid is not supported in Production and must be changed to your own email service\\n * Steps are here: https://backstage.forgerock.com/docs/idcloud/latest/tenants/email-provider.html#external_smtp_email_server\\n * @version 0.2.0\\n * @keywords email mail hotp sharedState transientState templateService\\n */\\n\\n/**\\n * Script configuration\\n*/\\n\\n// Initialise the logger called ds-node-logger-lib library script\\nXLogger = require(\\\"ds-node-logger-lib\\\").XLogger;\\nlogger = new XLogger(this);\\n\\nvar config = {\\n    /**\\n     * @property {string} templateID - Identifier of email template\\n     * @property {string} idmEndpoint - IDM Endpoint used to send templated emails\\n     * @property {string} idmAction - IDM action executed against the idmEndpoint\\n     */\\n\\n    templateID: \\\"otp\\\",\\n    idmEndpoint: \\\"external/email\\\",\\n    idmAction: \\\"sendTemplate\\\"\\n};\\n\\n/**\\n * Node outcomes\\n*/\\nvar nodeOutcome = {\\n    PASS: \\\"sent\\\",\\n    FAIL: \\\"noMail\\\",\\n    ERROR: \\\"error\\\"\\n};\\n\\n/**\\n * Send email via the IDM Email Service openidm binding in next-gen scripting\\n * \\n * @param {string} hotp - HOTP retrieved from transientState\\n * @param {string} mail - mail attribute retrieved from the idRepository. Note if this is a registration journey acquire mail from sharedState\\n * @param {string} givenName - givenName attribute retrieved from the idRepository. Note if this is a registration journey acquire givenName from sharedState\\n */\\n\\nfunction sendMail(hotp, mail, givenName) {\\n    try {\\n        var params = new Object();\\n        params.templateName = config.templateID;\\n        params.to = mail;\\n        params.object = {\\n            \\\"givenName\\\": givenName,\\n            \\\"otp\\\": hotp\\n        };\\n        openidm.action(config.idmEndpoint, config.idmAction, params);\\n        logger.error(\\\"Email send successfully\\\");\\n        return nodeOutcome.PASS;\\n    }\\n    catch (e) {\\n        logger.error(\\\"Failed to call IDM Email endpoint using template. Exception is: \\\" + e);\\n        return nodeOutcome.ERROR;\\n    }\\n};\\n\\n/**\\n * Main function\\n */\\n\\n(function () {\\n    logger.error(\\\"Node execution started\\\");\\n    var id;\\n    var hotp;\\n    var mail;\\n\\n    if (!(id = nodeState.get(\\\"_id\\\"))) {\\n        logger.error(\\\"Unable to retrieve Identity\\\");\\n        action.goTo(nodeOutcome.ERROR);\\n        return;\\n    } else {\\n        var identity = idRepository.getIdentity(id);\\n    }\\n\\n    if (!(hotp = nodeState.get(\\\"oneTimePassword\\\"))) {\\n        logger.error(\\\"Unable to retrieve HOTP from state\\\");\\n        action.goTo(nodeOutcome.ERROR);\\n        return;\\n    }\\n\\n    //If this is a registration journey adapt the following to try retrieve from nodeState\\n    if (!(mail = identity.getAttributeValues(\\\"mail\\\").toArray()[0])) {\\n        logger.error(\\\"Unable to retrieve mail attribute from the idRepository\\\");\\n        action.goTo(nodeOutcome.FAIL);\\n        return;\\n    }\\n\\n    //If this is a registration journey adapt the following to try retrieve from nodeState\\n    //Be sure to set givenName against the user\\n    if (!(givenName = identity.getAttributeValues(\\\"givenName\\\").toArray()[0])) {\\n        logger.error(\\\"Unable to retrieve givenName attribute from the idRepository\\\");\\n        action.goTo(nodeOutcome.FAIL);\\n        return;\\n    }\\n\\n    //Execute function to send mail\\n    outcome = sendMail(hotp, mail, givenName);\\n})();\"",
+          "default": false,
+          "language": "JAVASCRIPT",
+          "context": "AUTHENTICATION_TREE_DECISION_NODE",
+          "createdBy": "null",
+          "creationDate": 0,
+          "lastModifiedBy": "null",
+          "lastModifiedDate": 0,
+          "evaluatorVersion": "2.0"
+        }
+      },
+      "emailTemplates": {},
+      "socialIdentityProviders": {},
+      "themes": [],
+      "saml2Entities": {},
+      "circlesOfTrust": {}
+    }
+  }
+}
