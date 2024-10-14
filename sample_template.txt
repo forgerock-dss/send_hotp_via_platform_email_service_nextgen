@@ -1,4 +1,4 @@
-![](<https://www.forgerock.com/sites/default/files/2020-11/one-cloud-two-solutions.svg>)
+![](<https://www.pingidentity.com/content/dam/picr/nav/Ping-Logo-2.svg>)
 
 Hi {{object.givenName}}
 
@@ -6,4 +6,4 @@ Here is your One Time Password. Please enter it into the login browser window:
 
 # {{object.otp}}
 
-ForgeRock
+PingOne Advanced Identity Cloud
