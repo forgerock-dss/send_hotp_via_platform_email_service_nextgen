@@ -78,7 +78,7 @@ function sendMail(hotp, mail, givenName) {
         action.goTo(nodeOutcome.ERROR);
         return;
     }
-        var identity = idRepository.getIdentity(id);
+    var identity = idRepository.getIdentity(id);
 
     if (!(hotp = nodeState.get("oneTimePassword"))) {
         logger.error("Unable to retrieve HOTP from state");
