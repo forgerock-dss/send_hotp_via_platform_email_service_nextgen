@@ -68,7 +68,7 @@ function sendMail(hotp, mail, givenName) {
  */
 
 (function () {
-    logger.error("Node execution started");
+    logger.warn("Node execution started");
     var id;
     var hotp;
     var mail;
