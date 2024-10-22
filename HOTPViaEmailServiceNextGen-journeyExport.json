@@ -1,7 +1,7 @@
 {
   "meta": {
-    "origin": "https://openam-darinder-wforce.forgeblocks.com/platform/?realm=alpha#/journeys/HOTPViaEmailServiceNextGen",
-    "exportedBy": "darinder.shokar@forgerock.com",
+    "origin": "https://<tenant>/platform/?realm=alpha#/journeys/HOTPViaEmailServiceNextGen",
+    "exportedBy": "ps@pingidentity.com",
     "exportDate": "2024-10-22T07:04:46.779Z",
     "exportTool": "platform-admin ui tree export",
     "exportToolVersion": "1.0",
